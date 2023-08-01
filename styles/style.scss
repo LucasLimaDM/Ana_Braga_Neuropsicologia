@@ -1,188 +1,201 @@
 $contrast-base-color: #000028;
-$font-color: #101010;
-$background-color: #fefefe;
 $base-white: #fafafa;
-$header-height: 70px;
-$border-color: #e5e5e5;
-$gap-menu-size: 12px;
+$light-contrast: #00aaee;
+$menu-icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28255, 255, 255%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e";
 
-@mixin colored{
-    color: $base-white;
+textarea{
+    resize: none;
+}
+
+.navbar{
     background-color: $contrast-base-color;
-}
 
-@mixin flex-base($jc :space-around, $ai: center, $fd: column, $gap: 0px) {
-    display: flex;
-    justify-content: $jc;
-    align-items: $ai;
-    flex-direction: $fd;
-    gap: $gap;
-    flex-wrap: wrap;
-}
+    .navbar-brand{
+        color: $base-white;
+        font-size: 2em;
+    }
 
-*{
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-ul{
-    list-style: none;
-}
+    .navbar-toggler-icon{
+        background-image: url($menu-icon);
+    }
 
-body{
-    font-family: 'Raleway', sans-serif;
-    background-color: $background-color;
-    padding-top: $header-height;
-    min-height: 200vh;
-}
+    .nav{
 
-.display-text{
-    font-family: 'satisfy';
-    color: $base-white
-}
-
-.container{
-    @include flex-base(space-around, center, row);
-    width: 100%;
-    height: 100%;
-}
-
-
-header{
-    @include colored;
-    height: $header-height;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-
-
-    .container{
-        justify-content: space-between;
-
-        .menu-hamburguer{
-            @include flex-base();
-            height: 30px;
-            width: 35px;
-            cursor: pointer;
-
-            .row-span{
-                display: block;
-                height: 3px;
-                border-radius: 2px;
-                width: 100%;
-                background-color: $base-white;
-            }
+        .nav-item{
+            position: relative;
         }
-        
+        .nav-link{
+            color: $base-white;
+            height: 40px;
+            transition: translate 0.2s;
+        }
+        .nav-link:hover{
+            translate: 2px 0;
+            transition: translate 0.2s;
+        }
+        .nav-link.active{
+            color: $light-contrast;
+            font-weight: bold;
+        }
     }
 }
 
-.menu-bar{
-    @include flex-base(flex-start, flex-start);
-    height: 0px;
-    overflow-y: hidden;
-    transition: height 1s;
-    background-color: $base-white;
-    position: fixed;
-    left: 0;
-    top: $header-height;
-    width: 100vw;
-    z-index: 1;
-    
+h3, h4{
+    padding: 12px 0;
+}
 
+img{
+    width: 100%;
+}
 
-    ul{
-        @include flex-base(flex-start, flex-start, column, $gap-menu-size);
+section:not(#hero-section){
+    padding: 50px 0 24px 0;
 
-        font-size: 1.1em;
-        padding-top: $gap-menu-size;
-        padding-left: $gap-menu-size;
+    &:nth-child(odd){
+        background-color: $base-white;
     }
-
 }
 
 #hero-section{
-    position: relative;
-    .banner-image{
-        background-image: url(../images/campo-lavanda.jpg);
-        background-size: cover;
-        height: 50vh;
-        filter: brightness(0.7);
+
+    margin-bottom: 40px;
+
+    img{
+        width: 100%;
+    }
+}
+
+.keep-scroll-arrow{
+    margin-top: 40px;
+}
+
+#contato-submit{
+    background-color: $contrast-base-color;
+    color: $base-white;
+    margin: 16px 0px;
+    font-weight: bold;
+    &:hover{
+        background-color: $light-contrast;
     }
 
-    .display-text{
+}
+
+h2{
+    padding: 36px 0 24px 0;
+}
+
+input, button, textarea{
+    box-shadow: none !important;
+}
+
+.wrap-reverse{
+    flex-wrap: wrap-reverse;
+}
+
+.box-text{
+    padding-top: 16px;
+}
+
+
+.shadow-sides{
+    box-shadow: 0px 0px 50px -15px rgba(0,0,0,0.75);
+}
+
+.nav-link{
+    background-color: transparent;
+    border: none;
+}
+
+#cursos-section{
+
+    .nav{
+        margin-bottom: 8px;
+
+    }
+    
+    .nav-link{
+        border-right: 1px solid #dedede;
+        color: $contrast-base-color;
+        position: relative;
+        padding: 10px;
+
+    }
+
+    .nav-link::before{
+        content: "";
+        display: block;
+        background-color: $light-contrast;
+        width: 0;
+        height: 2px;
         position: absolute;
-        top: 25vh;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2.4em;
+        bottom: 0;
+        left: 0;
+        transition: 0.8s;
     }
 
-    .title-presentation{
-        @include colored;
-        text-align: center;
-        padding: 16px 0px;
-        
-        .actual-title{
-            text-transform: uppercase;
-            font-size: 2em;
-            margin-bottom: 8px;
-            letter-spacing: 0.04em;
-        }
-        .expected-title{
-            font-size: 1.2em;
-            letter-spacing: 0.1em;
-        }
+    .nav-link.active::before{
+        width: 100%;
+    }
+
+    .nav-link:hover::before{
+        width: 100%;
     }
 }
 
-#presentation-section{
+.redes-sociais{
+    list-style: none;
+    display: flex;
+    gap: 24px;
 
+    img{
+        width: 48px;
+    }
+}
+
+//md
+@media(min-width: 768px){
+    .navbar{
+        .nav{
+            .nav-link:hover{
+                translate: 0 2px;
+                transition: translate 0.2s;
+            }
+        }
+    }
     
-
-    .personal-view.container{
+    #presentation-section {
         .row{
-            padding: 32px 12px 32px 12px;
-            @include flex-base(space-around, center, row, 16px);
             width: 100%;
-            h3{
-                font-size: 2.2em;
-                color: #000028;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-areas: 
+            "imagem texto1" 
+            "imagem texto2";
+            gap: 16px;
+            
+            .box-text{
+                order: 2;
+
             }
-    
+            .box-text:first-of-type{
+                grid-area: texto1;
+            }
+            .box-text:last-of-type{
+                grid-area: texto2;
+            }
+
             img{
-                border-radius: 50%;
-            }
-
-            p{
-                width: 350px;
-                font-size: 1.2em;
+                max-width: 500px;
+                order: 1;
+                margin: 24px 0;
+                grid-area: imagem;
+                align-self: center;
             }
         }
     }
 
-    .neuro-presentation{
-        padding-top: 32px;
-        h3{
-            font-size: 2em;
-        }
-    }
-}
+    #hero-section img{
+        max-height: 80vh;
 
-
-// ativações via Javascript
-.open{
-    height: 160px;
-    transition: height 1s;
-    border-bottom: 1px solid $border-color;
-}
-
-
-@media(min-width: 650px){
-    .container{
-        width: 90%;
-        margin: auto;
     }
 }
