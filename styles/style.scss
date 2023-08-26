@@ -4,11 +4,16 @@ $pure-white: #fff;
 $text-color: #222;
 $light-contrast: #7373f2;
 $menu-icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28000, 000, 000%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e";
- 
+
+*{
+    outline: 1px solid lime;
+}
+ img{
+    object-fit: cover;
+ }
 body{
     font-family: 'PT Serif'; 
     color: $text-color;
-    font-size: 1.1em;
 }
 
 input, button, textarea{
@@ -20,7 +25,6 @@ input, button, textarea{
     position: sticky;
     top: 0;
     left: 0;
-    width: 100vw;
     z-index: 3;
     
 
@@ -28,7 +32,7 @@ input, button, textarea{
     border-bottom: 1px solid #eaeaea;
 
     .navbar-brand{
-        font-size: 2em;
+        font-size: 1.6em;
     }
 
     .navbar-toggler-icon{
@@ -50,29 +54,9 @@ input, button, textarea{
             height: 40px;
             transition: translate 0.2s;
 
-            &::before{
-                content: "";
-                display: block;
-                position: absolute;
-                left: 12px;
-                bottom: 0;
-                width: 0.8em;
-                height: 80%;
-                opacity: 30%;
-                z-index: 0;
-                background-color: #0000ff;
-                transition: 0.2s;
-
-            }
         }
         .nav-link:hover{
-            translate: 4px 0;
             transition: translate 0.2s;
-
-            &::before{
-                transition: 0.2s;
-                width: 70px;
-            }
         }
     }
 }
@@ -88,23 +72,109 @@ input, button, textarea{
         position: absolute;
         top: 50%;
         left: 60px;
-        transform: translateY(-70%);
+        transform: translateY(-50%);
         color: $pure-white;
+        max-width: 70%;
         h2{
-            font-size: 2.4em;
-
+            font-size: 1.6em;
         }
         
-        p.hero-text{
+        p{
             margin-top: 24px;
-            font-size: 1.3em;
+            font-size: 1em;
         }
     }
 }
 
+.section-title-container{
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .section-title{
+        font-size: 2.1em;
+        width: fit-content;
+        margin-right: 13%;
+        padding-left: 10%;
+    }
+}
+
+.presentation-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 24px;
+}
+
+.presentation-content-container{
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+    
+    grid-template-columns: 55% 45%;
+    justify-content: space-around;
+
+
+    figure{
+        position: relative;
+        width: 80%;
+        margin-bottom: 12%;
+        margin-left: 15%;
+
+
+        img{
+            width: 100%;
+            position: abosolute;
+    
+        }
+        #presentation-square{
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            height: 105%;
+            width: 40%;
+            background-color: $contrast-base-color;
+            z-index: -1;
+        }
+    }
+
+}
+
+@media(min-width: 768px){
+    .presentation-content-container{
+        display: grid;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    body{
+        font-size: 1.2em;
+    }
+
+    #hero-banner .hero-text-container {
+        margin-bottom: 120px;
+
+        h2{
+            font-size: 3em;
+        }
+        // p{
+
+        // }
+    }
+}
+
 @media (min-width: 992px){
+
+    .section-title-container .section-title{
+        margin: 0;
+        padding-left: 10%;
+    }
+
     .navbar {
-        .nav{ 
+
+        .nav{
             padding-bottom: 0px;
             .nav-item{
                 margin-top: 0;

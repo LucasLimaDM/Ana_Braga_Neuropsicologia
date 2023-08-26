@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
-// import imagemin from 'gulp-imagemin';
 const imagemin = require('gulp-imagemin');
 
 
@@ -9,7 +8,7 @@ function sassCompiler(){
     return gulp.src('./styles/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(sourcemaps.write('./'))
+        .pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./styles'));
 }
 
@@ -20,7 +19,7 @@ function sassCompiler(){
 // }
 
 function imageCompressor(){
-    return gulp.src('./fontimages/images-build/*')
+    return gulp.src('./images-build/*')
         .pipe(imagemin())
         .pipe(gulp.dest('./images'));
 }
@@ -29,12 +28,12 @@ function imageCompressor(){
 
 exports.default = () => {
     gulp.watch(
-        './source/styles/*.scss', 
+        './styles/*.scss', 
         {ignoreInitial: false}, 
         gulp.series(sassCompiler)
     )
 
     // gulp.watch('./source/scripts/*.js', {ignoreInitial: false}, gulp.series(javascriptProcessor))
 
-    gulp.watch('./source/images/*', {ignoreInitial: false}, gulp.series(imageCompressor))
+    gulp.watch('./images-build/*', {ignoreInitial: false}, gulp.series(imageCompressor))
 }
