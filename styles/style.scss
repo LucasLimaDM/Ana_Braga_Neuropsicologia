@@ -6,11 +6,13 @@ $light-contrast: #7373f2;
 $menu-icon: "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28000, 000, 000%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e";
 
 *{
-    outline: 1px solid lime;
+    outline: 0px solid lime;
 }
  img{
     object-fit: cover;
+    width: 100%;
  }
+
 body{
     font-family: 'PT Serif'; 
     color: $text-color;
@@ -25,7 +27,7 @@ input, button, textarea{
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 3;
+ 
     
 
     background-color: $pure-white;
@@ -100,12 +102,7 @@ input, button, textarea{
     }
 }
 
-.presentation-text{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 0 24px;
-}
+
 
 .presentation-content-container{
     display: flex;
@@ -119,7 +116,6 @@ input, button, textarea{
 
     figure{
         position: relative;
-        width: 80%;
         margin-bottom: 12%;
         margin-left: 15%;
 
@@ -140,6 +136,28 @@ input, button, textarea{
         }
     }
 
+    .presentation-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+}
+
+.especializacao-container{
+    display: grid;
+    margin: 0 12px;
+    gap: 12px;
+    place-items: space-around;
+    grid: 1fr 1fr / minmax(200px, 550px) minmax(200px, 550px);
+    justify-content: space-around;
+
+    .card-especializacao{
+
+        img{
+            width: 100%;
+        }
+    }
 }
 
 @media(min-width: 768px){
@@ -159,9 +177,7 @@ input, button, textarea{
         h2{
             font-size: 3em;
         }
-        // p{
-
-        // }
+        
     }
 }
 
